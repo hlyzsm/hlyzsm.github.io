@@ -1,22 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>慎独及梦的博客</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="javascripts/scale.fix.js"></script>
-   	  
-		<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet">
-		<script  type="text/javascript" class="library" src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-	  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!--[if lt IE 9]>
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="chrome=1" /> 
+  <title>慎独及梦的博客</title> 
+  <link rel="stylesheet" href="stylesheets/styles.css" /> 
+  <link rel="stylesheet" href="stylesheets/github-dark.css" /> 
+  <script src="javascripts/scale.fix.js"></script> 
+  <link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet" /> 
+  <script type="text/javascript" class="library" src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" /> 
+  <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-	<style>
+    <![endif]--> 
+  <style>
 		body{
 			background-color: #f8f8f8;
 		}
@@ -62,141 +59,81 @@ pre.jf-CodeContainer {
 	margin-top: 0;
 	margin-bottom: 0;
 	text-align: left;
-}		</style>    
-  </head>
-  <body>
-
-      <header>
-        <h1>慎独及梦</h1>
-        <p>我的博客</p>
-        <p class="view"><a href="https://github.com/hlyzsm">View the Project on GitHub <small>hlyzsm</small></a></p>
-        <ul>
-          <li class="single"><a href="https://github.com/hlyzsm/hlyzsm.github.io">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a id="hlyzsmgithubio" class="anchor" href="#hlyzsmgithubio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>hlyzsm.github.io</h1>
-
-<p>博客</p>
-	      	<div id="maincontainer">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							JSON格式化高亮
-						</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="row">
-								
-								<div class="col-lg-12">
-									<div class="form-group">
-										<label>
-											JSON
-										</label>
-										<textarea class="form-control json" rows="5">
-											{"type":"Coverage","domain":{"type":"Domain","domainType":"Trajectory","axes":{"composite":{"dataType":"tuple","components":["t","x","y","z"],"values":[]}},"referencing":[{"components":["t"],"system":{"type":"TemporalRS","calendar":"Gregorian"}},{"components":["y","x","z"],"system":{"type":"GeodeticCRS","id":"http://www.opengis.net/def/crs/EPSG/0/4979"}}]},"parameters":{"GPSTime":{"type":"Parameter","description":{"en":""},"unit":{"symbol":"s"},"observedProperty":{"id":"","label":{"en":"gpstime"}}}},"ranges":{"GPSTime":{"type":"NdArray","dataType":"float","axisNames":["composite"],"shape":[],"values":[]}}}
-										</textarea>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-								
-								<div class="col-lg-1">
-									<button type="button" class="btn btn-outline btn-primary btn-format">
-										格式化
-									</button>
-								</div>
-								
-								<div class="col-lg-2">
-									<div class="form-group">
-										<label>
-											缩进
-										</label>
-										<label class="radio-inline">
-											<input type="radio" name="tab" class="tab" value="2">
-											2
-										</label>
-										<label class="radio-inline">
-											<input type="radio" name="tab" class="tab" value="4" checked>
-											4
-										</label>
-									</div>
-								</div>
-								
-								<div class="col-lg-9">
-									<div class="form-group">
-										
-										<input type="checkbox" class="QuoteKeys" checked>
-										 引号
-										<input type="checkbox" class="CollapsibleView" checked>
-										 显示控制    
-										
-										<a href="javascript:;" class="expandAll">
-											展开
-										</a>
-										  
-										<a href="javascript:;" class="collapseAll">
-											叠起
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="3">
-											2级
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="4">
-											3级
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="5">
-											4级
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="6">
-											5级
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="7">
-											6级
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="8">
-											7级
-										</a>
-										  
-										<a href="javascript:;" class="expand" data-level="9">
-											8级
-										</a>
-										
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-lg-12">
-									<div class="Canvas">
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-      </section>
-
-	  	
-		
-    <footer>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    		
-		<script type="text/javascript">
+}		</style> 
+ </head> 
+ <body> 
+  <header> 
+   <h1>慎独及梦</h1> 
+   <p>我的博客</p> 
+   <p class="view"><a href="https://github.com/hlyzsm">View the Project on GitHub <small>hlyzsm</small></a></p> 
+   <ul> 
+    <li class="single"><a href="https://github.com/hlyzsm/hlyzsm.github.io">View On <strong>GitHub</strong></a></li> 
+   </ul> 
+  </header> 
+  <section> 
+   <h1> <a id="hlyzsmgithubio" class="anchor" href="#hlyzsmgithubio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>hlyzsm.github.io</h1> 
+   <p>博客</p> 
+   <div id="maincontainer"> 
+    <div class="row"> 
+     <div class="col-lg-12"> 
+      <div class="panel panel-default"> 
+       <div class="panel-heading">
+         JSON格式化高亮 
+       </div> 
+       <!-- /.panel-heading --> 
+       <div class="panel-body"> 
+        <div class="row"> 
+         <div class="col-lg-12"> 
+          <div class="form-group"> 
+           <label> JSON </label> 
+           <textarea class="form-control json" rows="5"> {&quot;type&quot;:&quot;Coverage&quot;,&quot;domain&quot;:{&quot;type&quot;:&quot;Domain&quot;,&quot;domainType&quot;:&quot;Trajectory&quot;,&quot;axes&quot;:{&quot;composite&quot;:{&quot;dataType&quot;:&quot;tuple&quot;,&quot;components&quot;:[&quot;t&quot;,&quot;x&quot;,&quot;y&quot;,&quot;z&quot;],&quot;values&quot;:[]}},&quot;referencing&quot;:[{&quot;components&quot;:[&quot;t&quot;],&quot;system&quot;:{&quot;type&quot;:&quot;TemporalRS&quot;,&quot;calendar&quot;:&quot;Gregorian&quot;}},{&quot;components&quot;:[&quot;y&quot;,&quot;x&quot;,&quot;z&quot;],&quot;system&quot;:{&quot;type&quot;:&quot;GeodeticCRS&quot;,&quot;id&quot;:&quot;http://www.opengis.net/def/crs/EPSG/0/4979&quot;}}]},&quot;parameters&quot;:{&quot;GPSTime&quot;:{&quot;type&quot;:&quot;Parameter&quot;,&quot;description&quot;:{&quot;en&quot;:&quot;&quot;},&quot;unit&quot;:{&quot;symbol&quot;:&quot;s&quot;},&quot;observedProperty&quot;:{&quot;id&quot;:&quot;&quot;,&quot;label&quot;:{&quot;en&quot;:&quot;gpstime&quot;}}}},&quot;ranges&quot;:{&quot;GPSTime&quot;:{&quot;type&quot;:&quot;NdArray&quot;,&quot;dataType&quot;:&quot;float&quot;,&quot;axisNames&quot;:[&quot;composite&quot;],&quot;shape&quot;:[],&quot;values&quot;:[]}}} </textarea> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="row"> 
+         <div class="col-lg-1"> 
+          <button type="button" class="btn btn-outline btn-primary btn-format"> 格式化 </button> 
+         </div> 
+         <div class="col-lg-2"> 
+          <div class="form-group"> 
+           <label> 缩进 </label> 
+           <label class="radio-inline"> <input type="radio" name="tab" class="tab" value="2" /> 2 </label> 
+           <label class="radio-inline"> <input type="radio" name="tab" class="tab" value="4" checked="" /> 4 </label> 
+          </div> 
+         </div> 
+         <div class="col-lg-9"> 
+          <div class="form-group"> 
+           <input type="checkbox" class="QuoteKeys" checked="" /> &nbsp;引号 
+           <input type="checkbox" class="CollapsibleView" checked="" /> &nbsp;显示控制&nbsp;&nbsp;&nbsp;&nbsp; 
+           <a href="javascript:;" class="expandAll"> 展开 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="collapseAll"> 叠起 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="3"> 2级 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="4"> 3级 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="5"> 4级 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="6"> 5级 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="7"> 6级 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="8"> 7级 </a> &nbsp;&nbsp; 
+           <a href="javascript:;" class="expand" data-level="9"> 8级 </a> 
+          </div> 
+         </div> 
+        </div> 
+        <div class="row"> 
+         <div class="col-lg-12"> 
+          <div class="Canvas"> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </section> 
+  <footer> 
+   <p>Hosted on GitHub Pages — Theme by <a href="https://github.com/orderedlist">orderedlist</a></p> 
+  </footer> 
+  <!--[if !IE]><script>fixScale(document);</script><![endif]--> 
+  <script type="text/javascript">
 			(function(){
 				
         $(document).ready(function () {
@@ -244,8 +181,8 @@ pre.jf-CodeContainer {
 			
     }
 		)();
-	</script>
-	<script>
+	</script> 
+  <script>
 	//jsonFormater.js
 function JsonFormater(opt) {
 	this.options = $.extend({
@@ -454,7 +391,6 @@ JsonFormater.prototype = {
 		return html;
 	}
 };
-	</script>
-  </body>
+	</script>  
+ </body>
 </html>
-
