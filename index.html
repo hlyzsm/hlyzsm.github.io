@@ -1,40 +1,433 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>慎独及梦 by hlyzsm</title>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			my formater
+		</title>
+		<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" rel="stylesheet">
+		<script  type="text/javascript" class="library" src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	</head>
+	<style>
+		body{
+			background-color: #f8f8f8;
+		}
+		#maincontainer{
+			width:50%;
+			margin:0 auto;
+			min-height: 568px;
+			background-color: #fff;
+			padding: 0 30px;
+		}
+		//jsonFormater.css
+@charset "utf-8";
+/* CSS Document */
+.jf-ObjectBrace {
+	color: #00AA00;
+	font-weight: bold;
+}
+.jf-ArrayBrace {
+	color: #0033FF;
+	font-weight: bold;
+}
+.jf-PropertyName {
+	color: #cc00ff;
+	font-weight: bold;
+}
+.jf-String {
+	color: #33dd00;
+}
+.jf-Number {
+	color: #ff0000;
+}
+.jf-Boolean {
+	color: #0000FF;
+}
+.jf-Null {
+	color: #0000FF;
+}
+.jf-Comma {
+	color: #000000;
+	font-weight: bold;
+}
+pre.jf-CodeContainer {
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: left;
+}
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	</style>
+	<body>
+		<div id="maincontainer">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							JSON格式化高亮
+						</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="row">
+								
+								<div class="col-lg-12">
+									<div class="form-group">
+										<label>
+											JSON
+										</label>
+										<textarea class="form-control json" rows="5">
+											{"type":"Coverage","domain":{"type":"Domain","domainType":"Trajectory","axes":{"composite":{"dataType":"tuple","components":["t","x","y","z"],"values":[]}},"referencing":[{"components":["t"],"system":{"type":"TemporalRS","calendar":"Gregorian"}},{"components":["y","x","z"],"system":{"type":"GeodeticCRS","id":"http://www.opengis.net/def/crs/EPSG/0/4979"}}]},"parameters":{"GPSTime":{"type":"Parameter","description":{"en":""},"unit":{"symbol":"s"},"observedProperty":{"id":"","label":{"en":"gpstime"}}}},"ranges":{"GPSTime":{"type":"NdArray","dataType":"float","axisNames":["composite"],"shape":[],"values":[]}}}
+										</textarea>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								
+								<div class="col-lg-1">
+									<button type="button" class="btn btn-outline btn-primary btn-format">
+										格式化
+									</button>
+								</div>
+								
+								<div class="col-lg-2">
+									<div class="form-group">
+										<label>
+											缩进
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="tab" class="tab" value="2">
+											2
+										</label>
+										<label class="radio-inline">
+											<input type="radio" name="tab" class="tab" value="4" checked>
+											4
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-lg-9">
+									<div class="form-group">
+										
+										<input type="checkbox" class="QuoteKeys" checked>
+										 引号
+										<input type="checkbox" class="CollapsibleView" checked>
+										 显示控制    
+										
+										<a href="javascript:;" class="expandAll">
+											展开
+										</a>
+										  
+										<a href="javascript:;" class="collapseAll">
+											叠起
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="3">
+											2级
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="4">
+											3级
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="5">
+											4级
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="6">
+											5级
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="7">
+											6级
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="8">
+											7级
+										</a>
+										  
+										<a href="javascript:;" class="expand" data-level="9">
+											8级
+										</a>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="Canvas">
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			(function(){
+				
+        $(document).ready(function () {
+					var jf;
+					var format = function(){
+						var options = {
+							dom: '.Canvas',
+							isCollapsible: $('.CollapsibleView').prop('checked'),
+							quoteKeys: $('.QuoteKeys').prop('checked'),
+							tabSize: $('input[name=tab]:checked').val()
+						}
+								;
+						
+						jf = new JsonFormater(options);
+						jf.doFormat($('.json').val());
+					}
+							;
+					
+					$(".btn-format").on('click', function(){
+						format();
+					}
+														 );
+					$('.expandAll').click(function () {
+						jf.expandAll();
+					}
+															 );
+					$('.collapseAll').click(function () {
+						jf.collapseAll();
+					}
+																 );
+					$('.tab, .CollapsibleView, .QuoteKeys').change(function () {
+						format();
+					}
+																												);
+					$('.expand').click(function () {
+						format();
+						var level = $(this).data('level');
+						jf.collapseLevel(level);
+					}
+														);
+					
+        }
+												 );
+			
+			
+    }
+		)();
+	</script>
+	<script>
+	//jsonFormater.js
+function JsonFormater(opt) {
+	this.options = $.extend({
+		dom: '',
+		tabSize: 2,
+		singleTab: " ",
+		quoteKeys: true,
+		imgCollapsed: "data:image/gif;base64,R0lGODlhHAALAMQAAP////7++/z8/Pb29fb18PHx7e/w6/Hw6e3s5unp4+jm2ODg3t3a0dnVy9bQxtLMv8zJurDC1L+9sMK4p32buDMzMwAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEHABcALAAAAAAcAAsAAAVU4CWOZGmeV0StLBWhsEgBdA1QMUwJvMUTuNyJMihaBodFUFiiECxQKGMpqlSq14uVRCkUEJbEokHVZrdmrqLRsDgekDLzQoFIJni8nKlqrV5zgYIhADs=",
+		imgExpanded: "data:image/gif;base64,R0lGODlhHAALAMQAAP////7++/z8/Pb29fb18PHx7e/w6/Hw6e3s5unp4+Dg3t3a0djY0dnVy9fTxNbQxtLMv8zJurDC1L+9sMK4p32buAAAAP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEHABcALAAAAAAcAAsAAAVL4CWOZGmel1StbCWhsFgBdA1UMVwJQd8TuNypMigWD4qgsFQhWJ7PhXI5qhQKCERC0ZhSLxUFo+FwQCJeagUyobjd6aWqtXp979QQADs=",
+		isCollapsible: true
+	},
+	opt || {});
+	this.isFormated = false;
+	this.obj = {
+		_dateObj: new Date(),
+		_regexpObj: new RegExp()
+	};
+	this.init();
+}
+JsonFormater.prototype = {
+	init: function() {
+		this.tab = this.multiplyString(this.options.tabSize, this.options.singleTab);
+		this.bindEvent();
+	},
+	doFormat: function(json) {
+		var html;
+		var obj;
+		try {
+			if (typeof json == 'object') {
+				obj = [json];
+			} else {
+				if (json == "") {
+					json = "\"\"";
+				}
+				obj = eval("[" + json + "]");
+			}
+			html = this.ProcessObject(obj[0], 0, false, false, false);
+			$(this.options.dom).html("<pre class='jf-CodeContainer'>" + html + "</pre>");
+			this.isFormated = true;
+		} catch(e) {
+			alert("JSON数据格式不正确:\n" + e.message);
+			$(this.options.dom).html("");
+			this.isFormated = false;
+		}
+	},
+	bindEvent: function() {
+		var that = this;
+		$(this.options.dom).off('click', '.imgToggle');
+		$(this.options.dom).on('click', '.imgToggle',
+		function() {
+			if (that.isFormated == false) {
+				return;
+			}
+			that.makeContentVisible($(this).parent().next(), !$(this).data('status'));
+		});
+	},
+	expandAll: function() {
+		if (this.isFormated == false) {
+			return;
+		}
+		var that = this;
+		this.traverseChildren($(this.options.dom),
+		function(element) {
+			if (element.hasClass('jf-collapsible')) {
+				that.makeContentVisible(element, true);
+			}
+		},
+		0);
+	},
+	collapseAll: function() {
+		if (this.isFormated == false) {
+			return;
+		}
+		var that = this;
+		this.traverseChildren($(this.options.dom),
+		function(element) {
+			if (element.hasClass('jf-collapsible')) {
+				that.makeContentVisible(element, false);
+			}
+		},
+		0);
+	},
+	collapseLevel: function(level) {
+		if (this.isFormated == false) {
+			return;
+		}
+		var that = this;
+		this.traverseChildren($(this.options.dom),
+		function(element, depth) {
+			if (element.hasClass('jf-collapsible')) {
+				if (depth >= level) {
+					that.makeContentVisible(element, false);
+				} else {
+					that.makeContentVisible(element, true);
+				}
+			}
+		},
+		0);
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>慎独及梦</h1>
-        <p>我的博客</p>
-        <p class="view"><a href="https://github.com/hlyzsm">View the Project on GitHub <small>hlyzsm</small></a></p>
-        <ul>
-          <li class="single"><a href="https://github.com/hlyzsm/hlyzsm.github.io">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a id="hlyzsmgithubio" class="anchor" href="#hlyzsmgithubio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>hlyzsm.github.io</h1>
+	},
+	isArray: function(obj) {
+		return obj && typeof obj === 'object' && typeof obj.length === 'number' && !(obj.propertyIsEnumerable('length'));
+	},
+	getRow: function(indent, data, isPropertyContent) {
+		var tabs = "";
+		if (!isPropertyContent) {
+			tabs = this.multiplyString(indent, this.tab);
+		}
+		if (data != null && data.length > 0 && data.charAt(data.length - 1) != "\n") {
+			data = data + "\n";
+		}
+		return tabs + data;
+	},
+	formatLiteral: function(literal, quote, comma, indent, isArray, style) {
+		if (typeof literal == 'string') {
+			literal = literal.split("<").join("<").split(">").join(">");
+		}
+		var str = "<span class='jf-" + style + "'>" + quote + literal + quote + comma + "</span>";
+		if (isArray) str = this.getRow(indent, str);
+		return str;
+	},
+	formatFunction: function(indent, obj) {
+		var tabs;
+		var i;
+		var funcStrArray = obj.toString().split("\n");
+		var str = "";
+		tabs = this.multiplyString(indent, this.tab);
+		for (i = 0; i < funcStrArray.length; i++) {
+			str += ((i == 0) ? "": tabs) + funcStrArray[i] + "\n";
+		}
+		return str;
+	},
+	multiplyString: function(num, str) {
+		var result = '';
+		for (var i = 0; i < num; i++) {
+			result += str;
+		}
+		return result;
+	},
+	traverseChildren: function(element, func, depth) {
+		var length = element.children().length;
+		for (var i = 0; i < length; i++) {
+			this.traverseChildren(element.children().eq(i), func, depth + 1);
+		}
+		func(element, depth);
+	},
+	makeContentVisible: function(element, visible) {
+		var img = element.prev().find('img');
+		if (visible) {
+			element.show();
+			img.attr('src', this.options.imgExpanded);
+			img.data('status', 1);
+		} else {
+			element.hide();
+			img.attr('src', this.options.imgCollapsed);
+			img.data('status', 0);
+		}
+	},
+	ProcessObject: function(obj, indent, addComma, isArray, isPropertyContent) {
+		var html = "";
+		var comma = (addComma) ? "<span class='jf-Comma'>,</span> ": "";
+		var type = typeof obj;
+		var clpsHtml = "";
+		var prop;
+		if (this.isArray(obj)) {
+			if (obj.length == 0) {
+				html += this.getRow(indent, "<span class='jf-ArrayBrace'>[ ]</span>" + comma, isPropertyContent);
+			} else {
+				clpsHtml = this.options.isCollapsible ? "<span><img class='imgToggle' data-status='1' src='" + this.options.imgExpanded + "'/></span><span class='jf-collapsible'>": "";
+				html += this.getRow(indent, "<span class='jf-ArrayBrace'>[</span>" + clpsHtml, isPropertyContent);
+				for (var i = 0; i < obj.length; i++) {
+					html += this.ProcessObject(obj[i], indent + 1, i < (obj.length - 1), true, false);
+				}
+				clpsHtml = this.options.isCollapsible ? "</span>": "";
+				html += this.getRow(indent, clpsHtml + "<span class='jf-ArrayBrace'>]</span>" + comma);
+			}
+		} else if (type == 'object') {
+			if (obj == null) {
+				html += this.formatLiteral("null", "", comma, indent, isArray, "Null");
+			} else {
+				var numProps = 0;
+				for (prop in obj) numProps++;
+				if (numProps == 0) {
+					html += this.getRow(indent, "<span class='jf-ObjectBrace'>{ }</span>" + comma, isPropertyContent);
+				} else {
+					clpsHtml = this.options.isCollapsible ? "<span><img class='imgToggle' data-status='1' src='" + this.options.imgExpanded + "'/></span><span class='jf-collapsible'>": "";
+					html += this.getRow(indent, "<span class='jf-ObjectBrace'>{</span>" + clpsHtml, isPropertyContent);
+					var j = 0;
+					for (prop in obj) {
+						var quote = this.options.quoteKeys ? "\"": "";
+						html += this.getRow(indent + 1, "<span class='jf-PropertyName'>" + quote + prop + quote + "</span>: " + this.ProcessObject(obj[prop], indent + 1, ++j < numProps, false, true));
+					}
+					clpsHtml = this.options.isCollapsible ? "</span>": "";
+					html += this.getRow(indent, clpsHtml + "<span class='jf-ObjectBrace'>}</span>" + comma);
+				}
+			}
+		} else if (type == 'number') {
+			html += this.formatLiteral(obj, "", comma, indent, isArray, "Number");
+		} else if (type == 'boolean') {
+			html += this.formatLiteral(obj, "", comma, indent, isArray, "Boolean");
+		} else if (type == 'undefined') {
+			html += this.formatLiteral("undefined", "", comma, indent, isArray, "Null");
+		} else {
+			html += this.formatLiteral(obj.toString().split("\\").join("\\\\").split('"').join('\\"'), "\"", comma, indent, isArray, "String");
+		}
+		return html;
+	}
+};
+	</script>
+		
 
-<p>博客</p>
-      </section>
-    </div>
-    <footer>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
-  </body>
+		
+		
+	</body>
 </html>
